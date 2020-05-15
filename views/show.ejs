@@ -16,7 +16,7 @@
             <div class="column">
 
                 <form class="ui form" action="/<%=post._id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
-                    
+
                     <div class="field">
                     <input type="text" name="post[title]" placeholder="Title" value="<%=post.title %> ">
                     </div>
@@ -24,15 +24,14 @@
                     <textarea name="post[content]" id="" cols="30" rows="3" placeholder="What's happening"><%=post.content %> </textarea>
                     </div>
 
-           
+
                     <div class="field">
                         <button id="OpenImgUpload" type="button" ><i class="image icon"></i></button>
                         <input type="file" name="file" id="imgupload" onchange="readURL(this);" style="display: none;">
                         <img id="imagepreview"  alt="your image" style="display: none;"/>
-               
                     </div>
-            
-            
+
+
                 <div class="content" >
 
                      <div style="margin-bottom: 1.5em;">
@@ -44,7 +43,7 @@
                         <form action="/<%= post._id %>/deletepost?_method=DELETE" method="POST">
                         <button class="ui small red button" style="margin:0 0 .5em 0;">DELETE POST</button>
                        </form>
-                             
+
                     </div>
                 </form>
 

@@ -21,8 +21,10 @@ var middleware = require('./middleware');
 const uploadRoute = require('./routes/upload'),
 indexRoute = require('./routes/index');
 
-const mongoAtlasURI = 'mongodb+srv://belzbuu:cn1JHu4208@test-cluster-jmbnw.mongodb.net/test?retryWrites=true&w=majority';
 
+
+
+const mongoAtlasURI = 'mongodb+srv://belzbuu:cn1JHu4208@test-cluster-jmbnw.mongodb.net/test?retryWrites=true&w=majority';
 
 
 const PORT = process.env.PORT || 3000;
@@ -31,7 +33,6 @@ app.set("view engine","ejs");
 mongoose.connect(mongoAtlasURI, {useUnifiedTopology: true,useNewUrlParser: true});
 //create sample data
 // seedDB();
-
 
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -79,9 +80,9 @@ app.get('/home',middleware.isLoggedIn,(req,res)=>{
       if(err){
           console.log(err);
       }else{
-        
-          
-          
+
+
+
           res.render("home",{posts:posts});
       }
     })
@@ -116,14 +117,14 @@ app.put("/:id/edit",upload.single('file'),(req,res)=>{
       postObj = {
         title: req.body.post.title,
         content: req.body.post.content,
-    
+
       }
     }
 
   Post.findByIdAndUpdate(req.params.id,postObj,(err,updated)=>{
       if(err){
           console.log(err);
-          
+
       }else{
           console.log(updated);
           res.redirect('/home');
@@ -142,11 +143,9 @@ app.delete("/:id/deletepost",(req,res)=>{
 });
 
 app.post("/:id/:comment_id/addcomment",(req,res)=>{
-   
-
 
     Post.findById(req.params.id,(err,post)=>{
-        
+
         if(err){
             console.log(err);
         }else{
@@ -192,7 +191,7 @@ app.delete("/:id/:comment_id/deletecomment",(req,res)=>{
         }
     });
 
-  
+
 });
 
 
@@ -200,7 +199,7 @@ app.get("/:user_id/editprofile",(req,res)=>{
     User.findById(req.params.user_id,(err,user)=>{
         res.render("editprofile",{user:user});
     })
- 
+
 });
 
 app.listen(PORT,()=>{
