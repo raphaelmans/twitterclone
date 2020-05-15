@@ -1,0 +1,23 @@
+<div id="create-post">
+    <div class="ui  container segment">
+        <h1 class="ui header">Home</h1>
+    <form class="ui form" action="/upload" method="POST" enctype="multipart/form-data">
+    
+        <div class="field">
+        <input type="text" name="post[title]" placeholder="Title">
+        </div>
+        <div class="field">
+        <textarea name="post[content]" id="" cols="30" rows="3" placeholder="What's happening"></textarea>
+        </div>
+        <div class="field">
+            <button id="OpenImgUpload" type="button" ><i class="image icon"></i></button>
+            <input type="file" name="file" id="imgupload" onchange="readURL(this);" style="display: none;">
+            <img id="imagepreview"  alt="your image" style="display: none;"/>
+           <div class="floatbuttonright">
+                <button class="ui blue button">Tweet</button>
+            </div>
+
+        </div>
+    </form>
+    </div>
+</div>

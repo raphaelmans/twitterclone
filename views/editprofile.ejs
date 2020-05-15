@@ -1,0 +1,33 @@
+
+<%- include('partials/header') %> 
+
+
+<div class="ui container">
+
+<form action="/<%=currentUser._id%>/editprofile?_method=PUT" method="POST" class="ui form" style="display: flex;flex-direction: column;justify-content: center;align-items: center;" enctype="multipart/form-data">
+   
+   <% if(user.profilepic){ %>
+    <img class="ui avatar image" style="font-size: 12em;" src="/image/<%= user.profilepic%> " alt="">
+   <% }else{ %>
+    <i class="user icon" style="font-size:10em; margin-top:1em;"></i>
+  <%  } %>
+  
+
+
+   
+    <button  id="OpenImgUpload" type="button"  style="margin-bottom:1em;"><a style="border-bottom: 1px solid;">Change profile picture</a></button>
+    <input type="file" name="file" id="imgupload" onchange="readURL(this);" style="display: none;">
+    <img id="imagepreview"  alt="your image" style="display: none;"/>
+   
+        <button class="ui centered blue button">DONE</button>
+        
+</form>
+<a href="/home" >
+    <i class="ui sign-out icon" style="font-size: 2em;"></i>
+    Back to home
+</a>
+</div>
+
+
+
+<%- include('partials/footer') %> 

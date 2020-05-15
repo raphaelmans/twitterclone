@@ -1,0 +1,101 @@
+
+
+body,html{
+  background: #f2f2f2;
+  font-family: Poppins-Regular, sans-serif;
+}
+
+img{
+    height:250px;
+}
+
+
+
+
+#feed .content{
+ padding: 0.5em;
+}
+
+#feed .avatar-column{
+    margin: 1em;
+    width:120px;
+}
+
+
+
+#imagepreview{
+    margin: 1.5em 0 1.5em 0;
+    height: 250px;
+}
+
+.container.segment{
+    -webkit-box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
+-moz-box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
+box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
+
+}
+
+#create-post{
+    margin-bottom: 1em;
+}
+
+#username{
+    font-size: 2em;
+    padding:0.2em 0 0.2em 0;
+}
+
+
+.floatbuttonright{
+    display: flex;
+    flex-direction: row-reverse;
+    /* background-color: red; */
+    width: 100%;
+}
+
+#avatar-centered{
+    padding: 1.2em;
+    width: 100%;
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.ui.container{
+    margin-top: 2em;
+}
+
+body{
+    height: 100vh;
+}
+.fullheight{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
+
+#OpenImgUpload{
+    padding: 0;
+    margin: 0;
+    border: none !important;
+    background:transparent;
+    border-radius:50%;
+    height: 100%;
+}
+
+.blue.button{
+    border-radius: 15px;
+}
+
+.red.button{
+    border-radius: 15px;
+}
+
+.ui.card{
+    width: 100%;
+}
+
+.image.icon{
+    font-size: 2em;
+    color: #2185d0
+}

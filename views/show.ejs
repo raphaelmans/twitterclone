@@ -1,0 +1,56 @@
+
+
+<%- include('partials/header') %>
+
+<div class="ui segment container">
+    <div class="right floated">
+    <a href="/home"><i class="close icon" style="font-size: 20pt;margin: 0;"></i></a>
+    </div>
+    <div class="ui card" style="width: 100%; padding-top:1em;">
+        <div class="ui equal width grid" >
+            <div class="avatar-column">
+                <div id="avatar-centered">
+                <img class="ui centered avatar fluid image"  style="font-size: 20pt;" src="https://images.unsplash.com/photo-1587930651167-060a3955582b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" srcset="">
+                </div>
+            </div>
+            <div class="column">
+
+                <form class="ui form" action="/<%=post._id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="field">
+                    <input type="text" name="post[title]" placeholder="Title" value="<%=post.title %> ">
+                    </div>
+                    <div class="field">
+                    <textarea name="post[content]" id="" cols="30" rows="3" placeholder="What's happening"><%=post.content %> </textarea>
+                    </div>
+
+           
+                    <div class="field">
+                        <button id="OpenImgUpload" type="button" ><i class="image icon"></i></button>
+                        <input type="file" name="file" id="imgupload" onchange="readURL(this);" style="display: none;">
+                        <img id="imagepreview"  alt="your image" style="display: none;"/>
+               
+                    </div>
+            
+            
+                <div class="content" >
+
+                     <div style="margin-bottom: 1.5em;">
+                    <div class="meta"><%= post.dateCreated.toDateString().slice(3) %> </div>
+                    </div>
+                    <div class="right floated"><button class="ui small blue button" style="margin:0 0 .5em 0;">DONE EDIT</button>
+                    </div>
+                    <div class="right floated">
+                        <form action="/<%= post._id %>/deletepost?_method=DELETE" method="POST">
+                        <button class="ui small red button" style="margin:0 0 .5em 0;">DELETE POST</button>
+                       </form>
+                             
+                    </div>
+                </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

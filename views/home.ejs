@@ -1,0 +1,135 @@
+
+
+<%- include('partials/header') %>
+
+
+
+<div class="ui container two column divided grid stackable" >
+
+    <div class="row">
+        <div class="four wide column right floated">
+            <%- include('partials/user_ui') %>
+        </div>
+        <div class="twelve wide column">
+
+            <%- include('partials/createpost') %>
+            <div id="feed">
+                <div class="ui segment container">
+                    <% posts.forEach((post)=>{ %>
+                    <div class="ui card" >
+                        <div class="ui equal width grid">
+                            <div class="avatar-column">
+                                <div id="avatar-centered">
+                                <img class="ui centered avatar fluid image"  style="font-size: 20pt;"
+
+                                 <%  if (post.author.id.profilepic){  %>
+                                    src="/image/<%= post.author.id.profilepic %> "
+                                 <%   }else{  %>
+                                    src="https://images.unsplash.com/photo-1587930651167-060a3955582b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                 <% } %>
+
+
+
+                                 alt="" srcset="">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+
+                                    <div><%= post.author.username %> </div>
+                                    <div class="header"><strong><%= post.title %></strong></div>
+
+                                    <div class="description">
+                                        <p>
+                                        <%= post.content %>
+                                        </p>
+                                    </div>
+                                    <% if(post.image!= undefined && post.image.length > 0){%>
+                                        <div class="ui medium image">
+
+                                        <img src="image/<%=post.image%>" alt="" srcset="" style="border-radius: 10px;">
+                                        </div>
+                                    <% } %>
+                                    <div style="margin-bottom: 1.5em;">
+                                    <div class="meta right floated"><%= post.dateCreated.toDateString().slice(3) %> </div>
+                                    </div>
+
+                                    <!-- edit button -->
+                                    <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+                                    <div class="right floated">
+                                        <button class="ui small blue button" style="margin:0 0 .5em 0;"><a href="/<%= post._id %>/edit" style="text-decoration: none; color: white;">EDIT POST</a></button>
+                                    </div>
+                                    <% } %>
+                                </div>
+                                 <!-- comments    -->
+                                 <div class="ui comments" style="margin-bottom: 1em;overflow: auto;">
+                                    <h3 class="ui dividing header">Comments</h3>
+
+                                    <!-- add comment -->
+
+                                    <form class="ui reply form" action="/<%=post._id%>/<%= currentUser._id%>/addcomment" method="POST">
+
+                                        <div class="field">
+                                            <textarea style="min-height:2px;height: 5em;" name="comment[text]" id="<%=post._id%>" style="width: 100%;"></textarea>
+                                        </div>
+
+                                            <button class="ui primary submit labeled icon button">
+                                          <i class="icon edit"></i> Add Comment
+                                        </button>
+
+                                    </form>
+
+                                    <% post.comments.forEach((comment)=>{  %>
+                                        <div class="comment" >
+                                        <a class="avatar">
+                                            <img
+
+                                            <%  if (post.author.id.profilepic){  %>
+                                                src="/image/<%= post.author.id.profilepic %> "
+                                             <%   }else{  %>
+                                                src="https://images.unsplash.com/photo-1587930651167-060a3955582b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                             <% } %>
+
+                                             >
+                                        </a>
+                                        <div class="content">
+                                            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+
+                                                <div>
+                                                <a class="author"><%= comment.author.username%></a>
+                                                <div class="metadata">
+                                                <span class="date"><%= comment.createdAt.toDateString().slice(3) %></span>
+                                                </div>
+                                                </div>
+                                                <!-- delete comment button  -->
+                                                <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+                                              <form action="/<%= post._id%>/<%= comment._id%>/deletecomment?_method=DELETE" method="POST">
+                                                <button class="ui icon button" style="padding: 0; background:transparent;">
+                                                    <i class="close icon" style="font-size: 1em; color: red;"></i>
+                                                  </button>
+                                              </form>
+                                            <% }%>
+                                            </div>
+
+                                            <div class="text">
+                                            <%=comment.text%>
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%- include('partials/footer') %>
