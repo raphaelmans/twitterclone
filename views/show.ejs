@@ -37,11 +37,11 @@
                      <div style="margin-bottom: 1.5em;">
                     <div class="meta"><%= post.dateCreated.toDateString().slice(3) %> </div>
                     </div>
-                    <div class="right floated"><button class="ui small blue button" style="margin:0 0 .5em 0;">DONE EDIT</button>
+                    <div class="right floated"><button class="ui small blue button" style="margin:0 .5em .5em 0;">DONE EDIT</button>
                     </div>
                     <div class="right floated">
                         <form action="/<%= post._id %>/deletepost?_method=DELETE" method="POST">
-                        <button class="ui small red button" style="margin:0 0 .5em 0;">DELETE POST</button>
+                        <button class="ui small red button" style="margin:0 .5em .5em 0;">DELETE POST</button>
                        </form>
 
                     </div>
