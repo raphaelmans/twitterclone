@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
+var middleware = require('../middleware')
 
 //==========
 //AUTH ROUTES
@@ -30,6 +31,7 @@ router.post('/signup',(req,res)=>{
 
 //LOGIN
 router.get('/',(req,res)=>{
+
     res.render('index');
 });
 

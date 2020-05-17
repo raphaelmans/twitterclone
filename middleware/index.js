@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 
 var middlewareObj ={
-    
+
 
 };
 
@@ -10,7 +10,7 @@ var middlewareObj ={
 
 middlewareObj.isLoggedIn = (req,res,next)=>{
     if(req.isAuthenticated()){
-        return next(); 
+        return next();
     }
     req.flash("err","Please Login First");
     res.redirect('/');

@@ -75,13 +75,11 @@ app.use('/',indexRoute);
 
 //NEWSFEED ROUTE
 app.get('/home',middleware.isLoggedIn,(req,res)=>{
-
-    Post.find({}).sort({dateCreated: 'desc'}).populate("comments").populate("author.id").exec((err,posts)=>{
+// app.get('/home',(req,res)=>{
+  Post.find({}).sort({dateCreated: 'desc'}).populate("author.id").populate({path:"comments",populate:{path:'author.id'}}).exec((err,posts)=>{
       if(err){
           console.log(err);
       }else{
-
-
 
           res.render("home",{posts:posts});
       }

@@ -1,7 +1,7 @@
 
 
 body,html{
-  background: #f2f2f2;
+  background: #fafafa;
   font-family: Poppins-Regular, sans-serif;
 }
 
@@ -26,12 +26,7 @@ img{
     height: 250px;
 }
 
-.container.segment{
-    -webkit-box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
--moz-box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
-box-shadow: 0px 15px 7px 0px rgba(0,0,0,0.22);
 
-}
 
 #create-post{
     margin-bottom: 1em;
@@ -96,4 +91,16 @@ body{
 .image.icon{
     font-size: 2em;
     color: #2185d0
+}
+.ui.comments .comment .avatar {
+  width: 50px;
+  height: 50px;
+}
+.ui.comments .comment .avatar img {
+  border-radius: 2rem;
+}
+
+.ui.segment {
+
+    border:none;
 }

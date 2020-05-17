@@ -1,6 +1,6 @@
 
 
-<%- include('partials/header') %>
+<%- include('partials/header_home') %>
 
 
 
@@ -25,9 +25,8 @@
                                  <%  if (post.author.id.profilepic){  %>
                                     src="/image/<%= post.author.id.profilepic %> "
                                  <%   }else{  %>
-                                    src="https://images.unsplash.com/photo-1587930651167-060a3955582b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                    src="images/default_profilepic.jpg"
                                  <% } %>
-
 
 
                                  alt="" srcset="">
@@ -57,7 +56,7 @@
                                     <!-- edit button -->
                                     <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
                                     <div class="right floated">
-                                        <button class="ui small blue button" style="margin:0 0 .5em 0;"><a href="/<%= post._id %>/edit" style="text-decoration: none; color: white;">EDIT POST</a></button>
+                                      <a href="/<%= post._id %>/edit" style="text-decoration: none;">  <button class="ui mini inverted blue button" style="margin:0 0 .5em 0;">EDIT POST</button> </a>
                                     </div>
                                     <% } %>
                                 </div>
@@ -73,21 +72,21 @@
                                             <textarea style="min-height:2px;height: 5em;" name="comment[text]" id="<%=post._id%>" style="width: 100%;"></textarea>
                                         </div>
 
-                                            <button class="ui primary submit labeled icon button">
-                                          <i class="icon edit"></i> Add Comment
+                                            <button class="ui primary button submit">
+                                           Add Comment
                                         </button>
 
                                     </form>
 
                                     <% post.comments.forEach((comment)=>{  %>
                                         <div class="comment" >
+
                                         <a class="avatar">
                                             <img
-
-                                            <%  if (post.author.id.profilepic){  %>
-                                                src="/image/<%= post.author.id.profilepic %> "
+                                            <%  if (comment.author.id.profilepic){  %>
+                                                src="/image/<%= comment.author.id.profilepic %> "
                                              <%   }else{  %>
-                                                src="https://images.unsplash.com/photo-1587930651167-060a3955582b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                                src="images/default_profilepic.jpg"
                                              <% } %>
 
                                              >

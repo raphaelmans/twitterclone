@@ -1,9 +1,21 @@
 
+
+
+
     <div style="display: flex;flex-direction: column;justify-content:center;align-items:center">
+
+    <% if(currentUser.profilepic){ %>
+      <a href="/<%=currentUser._id %>/editprofile">
+      <img class="ui avatar image" style="font-size: 2em;  margin: .5em;" src="/image/<%= currentUser.profilepic%> " alt="">
+      Profile
+      </a>
+     <% }else{ %>
     <a href="/<%=currentUser._id %>/editprofile">
         <i class="user icon" style="font-size: 2em; margin: .5em;"></i>
         Profile
     </a>
+    <% } %>
+
     <a href="/logout">
         <i class="ui sign-out icon" style="font-size: 2em;margin: .5em;"></i>
         Logout
